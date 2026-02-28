@@ -1,0 +1,39 @@
+{
+  "interns": [
+    {
+      "id": 1,
+      "name": "Alex Rivera",
+      "email": "alex.rivera@company.com",
+      "role": "Frontend Developer Intern",
+      "password": "hashed_password_789",
+      "assignment1":"completed",
+      "assignment2":"completed",
+      "assignment3":"completed",
+      "final_project":"completed"
+    },
+    {
+      "id": 2,
+      "name": "Samira Khan",
+      "email": "samira.khan@company.com",
+      "role": "Data Science Intern",
+      "password": "hashed_password_456",
+      "assignment1":"completed",
+      "assignment2":"completed",
+      "assignment3":"completed",
+      "final_project":" not completed"
+
+
+    },
+    {
+      "id": 3,
+      "name": "Jordan Smith",
+      "email": "jordan.smith@company.com",
+      "role": "UX Research Intern",
+      "password": "hashed_password_123",
+      "assignment1":"completed",
+      "assignment2":"not completed",
+      "assignment3":"completed",
+      "final_project":" not completed"
+    }
+  ]
+}
