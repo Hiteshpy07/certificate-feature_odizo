@@ -1,40 +1,47 @@
 "use client"
+import { use } from "react";
+import { useInternProfile } from '../../../../hooks/useInternProfile';
 import { useEffect,useState } from "react";
 import axios from "axios";
+import { useParams } from 'next/navigation';
 
-import { use} from "react";
 // import { useParams } from "next/navigation";
 import CertificateBox from "./CertificateBox";
 
 
-export default function CareersPage({params}) {
+export default  function CareersPage() {
+  
+  const params = useParams();
+  const certId = params.certId;
+  
 
- const { certId } = use(params)
+  const { profile, loading, error } = useInternProfile(params.certId);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading profile.</p>;
+  if (!profile) return <p>No intern found with this ID.</p>;
 
- let [verifyProfile,setverifyProfile]=useState()
 
 
 
-  const fetchdetailsfromprofile = async () => {
-        try {
-            const response = await axios.get("http://localhost:5069/interns")
-            let userProfile = response.data.find(item => item.id === certId)
-            setverifyProfile(userProfile)
+
+  // const fetchdetailsfromprofile = async () => {
+  //       try {
+  //           const response = await axios.get("http://localhost:5069/interns")
+  //           let userProfile = response.data.find(item => item.id === certId)
+  //           setverifyProfile(userProfile)
             
             
-        } catch (error) {
-            console.error("Error fetching profile:", error)
-        }
-    }
+  //       } catch (error) {
+  //           console.error("Error fetching profile:", error)
+  //       }
+  // //   }
 
-    useEffect(() => {
-            if (certId) fetchdetailsfromprofile()
-        }, [])
+  //   useEffect(() => {
+  //           if (certId) fetchdetailsfromprofile()
+  //       }, [certId])
 
-        console.log(verifyProfile)
-        let {name}=verifyProfile.name
-        console.log(name)
- 
+  console.log(profile.name)
+  console.log(profile.role)
   return (
     <div className="min-h-screen bg-stone-50 font-sans">
       {/* ── NAV ── */}
@@ -126,11 +133,11 @@ export default function CareersPage({params}) {
 
 
 <CertificateBox 
-  name="svdsd"
-  email="wfewe" 
+  name={profile.name}
+  email={profile.email}
   certId={certId}
-  assignments={[true, true, true, false]} // 1, 2, 3 completed, 4 pending
-  isCompleted={false}
+  assignments={[profile.assignment1, profile.assignment2, profile.assignment3, profile.final_project]} // 1, 2, 3 completed, 4 pending
+  isCompleted={true}
 />
 
      
