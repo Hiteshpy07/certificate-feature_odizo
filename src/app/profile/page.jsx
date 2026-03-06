@@ -12,8 +12,8 @@ export default function ProfilePage() {
 
   const fetchdetailsfromprofile = async () => {
     try {
-      const response = await axios.get("http://localhost:5069/interns")
-      const userProfile = response.data.find(item => item.id == paramid)
+      const response = await axios.get("http://localhost:3000/api/interns")
+      const userProfile = response.data.find(item => item._id == paramid)
       if (userProfile) setInternProfile(userProfile)
     } catch (error) {
       console.error("Error fetching profile:", error)
@@ -173,7 +173,7 @@ export default function ProfilePage() {
             CERT-ID: {paramid || "N/A"}
           </p>
           <button
-            onClick={() => router.push(`/profile/certificate?id=${internprofile.id}`)}
+            onClick={() => router.push(`/profile/certificate?id=${internprofile._id}`)}
             className="w-full py-4 bg-red-500 hover:bg-red-600 text-white text-xs font-black uppercase tracking-[0.2em] rounded-xl transition-all active:scale-95 shadow-lg shadow-red-200"
           >
             Get Certificate

@@ -79,9 +79,9 @@ function Auth() {
   function handlesub() {
     console.log(intern)
     let logintern = intern.find((user) => user.name === username && user.password===password)
-    console.log(logintern.id)
+    console.log(logintern._id)
     if (logintern) {
-      router.push(`/profile?id=${encodeURIComponent(logintern.id)}`)
+      router.push(`/profile?id=${encodeURIComponent(logintern._id)}`)
     } else {
       alert("User not found")
     }
@@ -97,7 +97,7 @@ function Auth() {
 
   const fetchdetails = async () => {
     try {
-      const response = await axios.get("http://localhost:5069/interns")
+      const response = await axios.get("http://localhost:3000/api/interns")
       setintern(response.data)
     } catch (error) {
       console.error("Error fetching interns:", error)

@@ -24,8 +24,8 @@ function CertificatePage() {
 
   const fetchdetails = async () => {
     try {
-      const response = await axios.get("http://localhost:5069/interns");
-      const user = response.data.find(item => item.id == certid);
+      const response = await axios.get("http://localhost:3000/api/interns");
+      const user = response.data.find(item => item._id == certid);
       if (user) setinterncert(user);
     } catch (error) {
       console.error("Error fetching data:", error);
