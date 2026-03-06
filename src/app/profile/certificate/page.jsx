@@ -152,7 +152,7 @@ function CertificatePage() {
 
             <div className="flex flex-col items-center">
                <div className="p-1 border border-[#f1f5f9] rounded bg-[#ffffff]">
-                 <QRCodeSVG value={`http://odizo-verify.vercel.app/verify/${certId}`} size={65} />
+                 <QRCodeSVG value={`http://localhost:3000/profile/certficate/verify/${certId}`} size={65} />
                </div>
                <p className="text-[8px] mt-1 text-[#94a3b8] font-bold uppercase tracking-tighter">Scan to Verify</p>
             </div>
